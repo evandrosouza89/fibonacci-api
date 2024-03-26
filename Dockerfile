@@ -4,7 +4,7 @@ FROM eclipse-temurin:21-alpine
 
 LABEL maintainer="github.com/evandrosouza89"
 
-EXPOSE 8080
+EXPOSE 8081
 
 WORKDIR /app
 

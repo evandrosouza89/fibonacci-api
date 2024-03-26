@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fibonacci Calculator</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            padding-top: 50px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-dark bg-dark fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="#">Fibonacci Calculator</a>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="https://github.com/evandrosouza89" target="_blank">
+                    <i class="fab fa-github"></i> GitHub (View My Projects)
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="https://linkedin.com/in/evandro-souza" target="_blank">
+                    <i class="fab fa-linkedin"></i> LinkedIn (Connect with Me)
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Page Content -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 offset-md-3 mt-5">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Fibonacci Sequence Calculator</h5>
+                    <form id="fibonacciForm">
+                        <div class="form-group">
+                            <label for="inputNumber">Enter a number (up to 1000):</label>
+                            <input type="number" class="form-control" id="inputNumber" min="0" max="1000" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Calculate</button>
+                    </form>
+                    <div class="mt-3">
+                        <p id="fibonacciResult" class="font-weight-bold"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+    document.getElementById('fibonacciForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const number = document.getElementById('inputNumber').value;
+        fetch(`/api/fib?n=${number}`)
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('fibonacciResult').textContent = `Response: ${data}`;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+version: '3.9'
+
+services:
+
+  back-end:
+    build: .
+    ports:
+      - "8081:8081"
+    healthcheck:
+      test: "wget -q -O - http://localhost:8081/api/actuator/health | grep -q UP"
+      start_period: 30s
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    restart: always
+
+  app:
+    build: /app/.
+    ports:
+      - "80:80"
+    depends_on:
+      back-end:
+        condition: service_healthy
