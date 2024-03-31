@@ -1,7 +1,7 @@
 services:
 
   back-end:
-    image: evandrosouza89/fibonnaci-api:latest
+    build: .
     ports:
       - "8081:8081"
     healthcheck:
@@ -13,7 +13,7 @@ services:
     restart: always
 
   app:
-    image: evandrosouza89/fibonnaci-api-app:latest
+    build: /app/.
     ports:
       - "80:80"
     depends_on:
