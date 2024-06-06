@@ -8,7 +8,7 @@ This Fibonacci service provides a RESTful API endpoint to calculate Fibonacci nu
     <img src="/assets/screenshot.png" height="85%" width="85%" alt="App screenshot">
 </p>
 
-[Check live demo on this link](http://167.234.251.52/)
+[Check live demo on this link](http://159.112.188.59/)
 
 ## Prerequisites
 
